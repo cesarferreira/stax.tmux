@@ -62,12 +62,12 @@ The plugin sets `status-right` to display:
 
 | Field | Example | Meaning |
 |-------|---------|---------|
-| Branch | `feat/login-flow` | Current branch (truncated at 20 chars) |
+| Branch | `feat/login-flow` | Current branch (truncated at 50 chars) |
 | Position | `[3/5]` | 3rd branch in a 5-deep stack |
 | PR | `#42` | Open PR · `#42 draft` · `#42 merged` · `⊘` (no PR) |
 | CI | `● passing` | `● passing` · `✗ failing` · `⟳ running` · `– no CI` |
 
-Status refreshes every 5 seconds (configurable via `status-interval`). Reads from stax's local CI cache — no live GitHub API calls on each tick. Shows nothing when on trunk or outside a stax repo.
+Status refreshes every 5 seconds (configurable via `status-interval`). Reads from stax's local CI cache — no live GitHub API call on each tick. When the cache is older than 90 seconds, a background `stax ci` is spawned automatically so CI and PR draft state stay current. Shows nothing when on trunk or outside a stax repo.
 
 ---
 
