@@ -1,5 +1,9 @@
 # stax.tmux
 
+<p align="center">
+  <img src="screenshot.png" alt="stax.tmux screenshot" />
+</p>
+
 > A [TPM](https://github.com/tmux-plugins/tpm) plugin for [stax](https://github.com/cesarferreira/stax) — live stack status in your status bar, keybindings for stack navigation, and automatic window rename on branch checkout.
 
 ```
