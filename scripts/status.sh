@@ -1,3 +1,8 @@
 #!/usr/bin/env bash
-# Thin wrapper — stax owns the formatting logic
-stax tmux status 2>/dev/null || true
+output=$(stax tmux status 2>/dev/null)
+if [ -n "$output" ]; then
+    printf '%s' "$output"
+else
+    branch=$(git rev-parse --abbrev-ref HEAD 2>/dev/null)
+    [ -n "$branch" ] && printf '⎇ %s' "$branch"
+fi
