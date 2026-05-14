@@ -13,16 +13,20 @@ down_key="$(tmux show-option -gqv '@stax-down-key')"
 down_key="${down_key:-[}"
 sync_key="$(tmux show-option -gqv '@stax-sync-key')"
 sync_key="${sync_key:-M-s}"
+rs_key="$(tmux show-option -gqv '@stax-rs-key')"
+rs_key="${rs_key:-M-r}"
 
 # Register keybindings only if the key is non-empty
 [ -n "$popup_key" ] && tmux bind-key "$popup_key" \
   display-popup -E -w 80% -h 80% 'stax watch --current'
 [ -n "$up_key" ] && tmux bind-key "$up_key" \
-  run-shell 'stax up > /dev/null 2>&1 || true'
+  run-shell 'printf "⬆ moving up..." > /tmp/stax-status && tmux refresh-client -S; stax up > /dev/null 2>&1 || true; rm -f /tmp/stax-status && tmux refresh-client -S'
 [ -n "$down_key" ] && tmux bind-key "$down_key" \
-  run-shell 'stax down > /dev/null 2>&1 || true'
+  run-shell 'printf "⬇ moving down..." > /tmp/stax-status && tmux refresh-client -S; stax down > /dev/null 2>&1 || true; rm -f /tmp/stax-status && tmux refresh-client -S'
 [ -n "$sync_key" ] && tmux bind-key "$sync_key" \
-  run-shell 'stax sync > /dev/null 2>&1 || true'
+  run-shell 'printf "⟳ syncing..." > /tmp/stax-status && tmux refresh-client -S; stax sync > /dev/null 2>&1 || true; rm -f /tmp/stax-status && tmux refresh-client -S'
+[ -n "$rs_key" ] && tmux bind-key "$rs_key" \
+  run-shell 'printf "⟳ syncing..." > /tmp/stax-status && tmux refresh-client -S; stax rs > /dev/null 2>&1 || true; rm -f /tmp/stax-status && tmux refresh-client -S'
 
 # Status bar: call stax tmux status every status-interval seconds
 tmux set-option -g status-interval 5
