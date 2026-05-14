@@ -11,8 +11,6 @@ up_key="$(tmux show-option -gqv '@stax-up-key')"
 up_key="${up_key:-]}"
 down_key="$(tmux show-option -gqv '@stax-down-key')"
 down_key="${down_key:-[}"
-sync_key="$(tmux show-option -gqv '@stax-sync-key')"
-sync_key="${sync_key:-M-s}"
 rs_key="$(tmux show-option -gqv '@stax-rs-key')"
 rs_key="${rs_key:-M-r}"
 
@@ -32,8 +30,6 @@ bind_key() {
   run-shell -b 'printf "⬆ moving up..." > /tmp/stax-status && tmux refresh-client -S; stax up > /dev/null 2>&1 || true; rm -f /tmp/stax-status && tmux refresh-client -S'
 [ -n "$down_key" ] && bind_key "$down_key" \
   run-shell -b 'printf "⬇ moving down..." > /tmp/stax-status && tmux refresh-client -S; stax down > /dev/null 2>&1 || true; rm -f /tmp/stax-status && tmux refresh-client -S'
-[ -n "$sync_key" ] && bind_key "$sync_key" \
-  run-shell -b 'printf "⟳ syncing..." > /tmp/stax-status && tmux refresh-client -S; stax sync > /dev/null 2>&1 || true; rm -f /tmp/stax-status && tmux refresh-client -S'
 [ -n "$rs_key" ] && bind_key "$rs_key" \
   run-shell -b 'printf "⟳ syncing..." > /tmp/stax-status && tmux refresh-client -S; stax rs > /dev/null 2>&1 || true; rm -f /tmp/stax-status && tmux refresh-client -S'
 

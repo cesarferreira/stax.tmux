@@ -82,7 +82,6 @@ Status refreshes every 5 seconds (configurable via `status-interval`). Reads fro
 | `prefix + S` | Open stack popup (`stax watch --current` in a floating panel) |
 | `prefix + ]` | `stax up` — move away from trunk |
 | `prefix + [` | `stax down` — move toward trunk |
-| `Alt + s` | `stax sync` — sync trunk and clean merged branches |
 | `Alt + r` | `stax rs` — sync trunk and clean merged branches |
 
 While a command is running, the status bar shows a transient message (`⬆ moving up...`, `⬇ moving down...`, `⟳ syncing...`) and clears automatically when done.
@@ -95,7 +94,6 @@ Set options **before** the plugin loads:
 set -g @stax-popup-key 'S'     # default: S
 set -g @stax-up-key ']'        # default: ]
 set -g @stax-down-key '['      # default: [
-set -g @stax-sync-key 'M-s'    # default: M-s → Alt+s (no prefix); other keys need prefix
 set -g @stax-rs-key 'M-r'      # default: M-r → Alt+r (no prefix); other keys need prefix
 
 set -g @plugin 'cesarferreira/stax.tmux'
@@ -104,7 +102,6 @@ set -g @plugin 'cesarferreira/stax.tmux'
 Set any key to `''` to disable that binding:
 
 ```tmux
-set -g @stax-sync-key ''       # disables the sync binding
 set -g @stax-rs-key ''         # disables the rs binding
 ```
 
