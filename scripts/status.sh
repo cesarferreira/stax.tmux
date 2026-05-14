@@ -8,8 +8,8 @@ if [ -f /tmp/stax-status ]; then
 fi
 output=$(stax tmux status 2>/dev/null)
 if [ -n "$output" ]; then
-    printf '%s%s%s%s' "$DIM" "$BRANCH_ICON" "$output" "$RESET"
+    printf '%s%s %s%s' "$DIM" "$BRANCH_ICON" "$output" "$RESET"
 else
     branch=$(git rev-parse --abbrev-ref HEAD 2>/dev/null)
-    [ -n "$branch" ] && printf '%s%s%s%s' "$DIM" "$BRANCH_ICON" "$branch" "$RESET"
+    [ -n "$branch" ] && printf '%s%s %s%s' "$DIM" "$BRANCH_ICON" "$branch" "$RESET"
 fi
