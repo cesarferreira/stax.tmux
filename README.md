@@ -95,8 +95,8 @@ Set options **before** the plugin loads:
 set -g @stax-popup-key 'S'     # default: S
 set -g @stax-up-key ']'        # default: ]
 set -g @stax-down-key '['      # default: [
-set -g @stax-sync-key 'M-s'    # default: M-s (Alt+s, no prefix needed)
-set -g @stax-rs-key 'M-r'      # default: M-r (Alt+r, no prefix needed)
+set -g @stax-sync-key 'M-s'    # default: M-s → Alt+s (no prefix); other keys need prefix
+set -g @stax-rs-key 'M-r'      # default: M-r → Alt+r (no prefix); other keys need prefix
 
 set -g @plugin 'cesarferreira/stax.tmux'
 ```
